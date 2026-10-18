@@ -1,0 +1,44 @@
+/* React Bits Aurora Component CSS */
+.aurora-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.aurora-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Card 06 Aurora background styling */
+.wc-card-aurora-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.wc-card-aurora-bg .aurora-canvas {
+  opacity: 0.95;
+  mix-blend-mode: screen;
+}
+
+.card-swap-card.wc-card-has-aurora {
+  background: #08090C !important;
+}
+
+.wc-card-has-aurora .card-swap-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.wc-card-has-aurora .card-swap-card-rim {
+  z-index: 3;
+}

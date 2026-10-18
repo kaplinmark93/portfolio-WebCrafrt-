@@ -1,0 +1,225 @@
+/* ==========================================================================
+   PROCESS PARTICLES SCROLLYTELLING STYLES
+   Turnkey Development Process with Pinned Canvas & Glass HUD
+   ========================================================================== */
+
+.wc-process-scroll-container {
+  position: relative;
+  width: 100%;
+  height: 380vh; /* Sufficient scroll travel for 6 stages */
+  background: #08090f;
+  margin: 0 0 clamp(4rem, 8vw, 8rem) 0;
+  padding: 0;
+  border-radius: 24px;
+  overflow: clip;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+}
+
+.wc-process-sticky-frame {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: radial-gradient(circle at 50% 40%, #15102a 0%, #08090f 75%);
+  box-sizing: border-box;
+  padding: clamp(1.2rem, 3vh, 2.5rem) clamp(1rem, 4vw, 3rem);
+  z-index: 10;
+}
+
+/* Background atmospheric glow under the particles */
+.wc-process-ambient-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(70vw, 550px);
+  height: min(70vw, 550px);
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.22) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Particle Canvas */
+#wc-process-particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Top Header Bar */
+.wc-process-top-bar {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono, 'JetBrains Mono', 'Fira Code', monospace);
+  font-size: clamp(0.72rem, 1.2vw, 0.85rem);
+  letter-spacing: 0.08em;
+}
+
+.wc-process-top-title {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wc-process-top-title-accent {
+  color: #c084fc;
+  font-weight: 700;
+}
+
+.wc-process-top-indicator {
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+}
+
+/* Bottom Glass HUD Card */
+.wc-process-glass-hud {
+  position: relative;
+  z-index: 5;
+  width: min(92%, 580px);
+  background: rgba(14, 17, 28, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  border-radius: 18px;
+  padding: clamp(1.2rem, 2.5vh, 1.6rem) clamp(1.4rem, 3.5vw, 2.2rem);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 35px rgba(124, 58, 237, 0.18);
+  text-align: center;
+  margin-bottom: clamp(0.5rem, 2vh, 1.8rem);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.wc-process-glass-hud:hover {
+  border-color: rgba(168, 85, 247, 0.55);
+}
+
+/* Header line in HUD */
+.wc-process-hud-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.wc-process-step-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, #7c3aed, #5227FF);
+  color: #ffffff;
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.5);
+}
+
+.wc-process-step-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.18rem 0.55rem;
+  border-radius: 6px;
+}
+
+.wc-process-hud-title {
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.45rem 0;
+  line-height: 1.25;
+  background: linear-gradient(180deg, #ffffff 30%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.wc-process-hud-desc {
+  font-size: clamp(0.82rem, 1.3vw, 0.94rem);
+  color: #94a3b8;
+  line-height: 1.55;
+  margin: 0 0 1rem 0;
+}
+
+/* Progress bar container */
+.wc-process-progress-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.wc-process-progress-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.wc-process-progress-bar {
+  height: 100%;
+  width: 16.6%;
+  background: linear-gradient(90deg, #7c3aed, #38bdf8, #c084fc);
+  border-radius: 3px;
+  box-shadow: 0 0 12px #38bdf8;
+  transition: width 0.12s linear;
+}
+
+.wc-process-scroll-hint {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .wc-process-scroll-container {
+    height: 320vh;
+  }
+
+  .wc-process-sticky-frame {
+    padding: 1rem;
+  }
+
+  .wc-process-glass-hud {
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 14px;
+  }
+
+  .wc-process-hud-desc {
+    margin-bottom: 0.75rem;
+  }
+}

@@ -1,0 +1,233 @@
+/**
+ * ORB COMPONENT STYLES (React Bits Specification)
+ * Fullscreen / Container WebGL2 Orb effect
+ */
+
+.orb-container {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.orb-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Hero Section with Orb on Left */
+.wc-orb-hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background-color: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.wc-orb-stage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* Ambient glow subtle overlay */
+.wc-orb-ambient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 25% 55%, rgba(156, 67, 254, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Hero Content & Atmosphere Overlay */
+.wc-orb-overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+/* Left column is empty to let the Orb shine freely */
+.wc-orb-left-spacer {
+  pointer-events: none;
+}
+
+/* Right column for refined agency presence */
+.wc-orb-right-content {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 2rem;
+}
+
+.wc-orb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #E2E8F0;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.wc-orb-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #38BDF8;
+  box-shadow: 0 0 8px #38BDF8;
+}
+
+.wc-orb-hero-title {
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+  margin: 0 0 1.25rem 0;
+}
+
+.wc-orb-hero-subtitle {
+  font-size: clamp(1rem, 1.25vw, 1.25rem);
+  line-height: 1.6;
+  color: #94A3B8;
+  max-width: 480px;
+  margin: 0 0 2rem 0;
+  font-weight: 400;
+}
+
+.wc-orb-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.wc-orb-scroll-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.65rem;
+  background: #FFFFFF;
+  color: #000000;
+  border: 1px solid #FFFFFF;
+  border-radius: 9999px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+}
+
+.wc-orb-scroll-btn:hover {
+  background: #F1F5F9;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.25);
+}
+
+.wc-orb-scroll-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.wc-orb-scroll-btn:hover svg {
+  transform: translateY(3px);
+}
+
+/* Scroll indicator anchored at bottom center */
+.wc-orb-bottom-hint {
+  position: absolute;
+  bottom: 2.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  pointer-events: auto;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.wc-orb-bottom-hint:hover {
+  color: #FFFFFF;
+}
+
+.wc-orb-mouse-icon {
+  width: 20px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  box-sizing: border-box;
+}
+
+.wc-orb-mouse-wheel {
+  width: 3px;
+  height: 6px;
+  background: #FFFFFF;
+  border-radius: 2px;
+  animation: wcOrbWheel 1.6s infinite ease-in-out;
+}
+
+@keyframes wcOrbWheel {
+  0% { transform: translateY(0); opacity: 1; }
+  60% { transform: translateY(8px); opacity: 0; }
+  61% { transform: translateY(0); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .wc-orb-overlay {
+    grid-template-columns: 1fr;
+    padding: 0 2rem;
+    text-align: left;
+  }
+  .wc-orb-left-spacer {
+    display: none;
+  }
+  .wc-orb-right-content {
+    padding-left: 0;
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 1.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
